@@ -21,3 +21,19 @@
     color: white;
     background: hotpink;
 }
+
+#aspect_submission_StepTransformer_list_submit-project .ds-add-button {
+    margin-top: 10px;
+    min-width: 30%;
+}
+
+.upload-rioxx-version-warning {
+    margin-left:0;
+    @extend .alert;
+    @extend .alert-info;
+
+    h3 {
+        margin-bottom: 15px;
+        margin-top: 15px;
+    }
+}
