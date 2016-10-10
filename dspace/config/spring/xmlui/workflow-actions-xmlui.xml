@@ -17,4 +17,8 @@
 
     <bean id="scorereviewaction_xmlui" class="org.dspace.app.xmlui.aspect.xmlworkflow.actions.processingaction.ScoreReviewAction" scope="singleton"/>
 
+    <bean id="refcomplianceaction_xmlui" class="org.dspace.app.xmlui.aspect.compliance.workflow.REFComplianceAction" scope="singleton"/>
+
+    <bean id="rioxxcomplianceaction_xmlui" class="org.dspace.app.xmlui.aspect.compliance.workflow.RIOXXComplianceAction" scope="singleton"/>
+
 </beans>

@@ -30,7 +30,7 @@ public class Script {
         Script.mainImpl(args);
     }
 
-    protected void mainImpl(String[] args) {
+    public void mainImpl(String[] args) {
         try {
             if (processArgs(args) == 0) {
                 System.exit(0);

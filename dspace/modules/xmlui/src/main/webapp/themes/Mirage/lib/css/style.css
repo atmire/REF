@@ -68,7 +68,7 @@ select.multiple {
 }
 
 #ds-header-logo-text {
-    font-size: 400%;
+    font-size: 275%;
     color: white;
     line-height: 70px;
     font-weight: normal;
@@ -363,11 +363,11 @@ ul.ds-progress-list li {
 }
 
 ul.ds-progress-list li.button {
-    padding: 0;
+        padding: 0;
 }
 
 ul.ds-progress-list li.button input.ds-button-field {
-    font-size: 77%;
+        font-size: 77%;
 }
 
 .ie6 ul.ds-progress-list li.button input.ds-button-field,
@@ -403,12 +403,12 @@ ul.ds-progress-list li.disabled input.ds-button-field
 
 
 ul.ds-progress-list li.arrow {
-    border: none;
-    background: none;
-    font-size: 116%;
-    font-weight: normal;
-    margin-left: 3px;
-    margin-right: 3px;
+        border: none;
+        background: none;
+        font-size: 116%;
+        font-weight: normal;
+        margin-left: 3px;
+        margin-right: 3px;
 }
 
 .ie6 ul.ds-progress-list li.arrow {
@@ -636,13 +636,20 @@ span.field-help {
 #aspect_submission_Submissions_div_submissions table,
 #aspect_submission_Submissions_div_submissions table tr,
 #aspect_submission_Submissions_div_submissions table td,
-#aspect_submission_Submissions_div_submissions table th {
+#aspect_submission_Submissions_div_submissions table th,
+.related-data-table,
+.related-data-table tr,
+.related-data-table td,
+.related-data-table th{
     background-color: #FFFFFF;
     border: 1px solid #9CACBA;
 }
 
 #aspect_submission_Submissions_div_submissions table tr.ds-table-header-row,
-#aspect_submission_Submissions_div_submissions table tr.ds-table-header-row th {
+#aspect_submission_Submissions_div_submissions table tr.ds-table-header-row th
+.related-data-table tr.ds-table-header-row,
+.related-data-table tr.ds-table-header-row th
+{
     background-color: #B6C8D9;
     border: 1px solid #9CACBA;
 
@@ -884,7 +891,7 @@ div.discoverySearchBox .ds-form-content
 form.search table input.ds-text-field,
 div.discoverySearchBox table input.ds-text-field
 {
-    margin: 0;
+   margin: 0;
 }
 
 form.search .field-help,
@@ -1142,9 +1149,9 @@ form.discover-sort-box select{
 
 /* FOR CC License */
 span.floatleft {
-    border:none;
-    float:right;
-    display:inline;
+	border:none;
+	float:right;
+	display:inline;
 }
 
 /* FOR CC PAGE to GROUP ITEMS horizontally */
@@ -1154,24 +1161,24 @@ ul.horizontal li span.bold a { color: black; }
 
 ul.horizontalVanilla
 {
-    font-weight: bold;
-    list-style-type: none;
-    padding: 0px;
-    padding-left: 0px;
-    padding-bottom: 15px;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
-    margin: 10px -1px 5px -1px;
-    width: inherit;
+font-weight: bold;
+list-style-type: none;
+padding: 0px;
+padding-left: 0px;
+padding-bottom: 15px;
+border-left: 1px solid white;
+border-right: 1px solid white;
+margin: 10px -1px 5px -1px;
+width: inherit;
 }
 
 ul.horizontalVanilla li
 {
-    float: left;
-    height: 100%;
-    background-color: rgb(255, 255, 255);
-    margin: 2px 2px 0px 2px;
-    /* border: 1px solid rgb(240, 240, 210); */
+float: left;
+height: 100%;
+background-color: rgb(255, 255, 255);
+margin: 2px 2px 0px 2px;
+/* border: 1px solid rgb(240, 240, 210); */
 }
 
 /* Controlled vocabulary support css START*/
@@ -1284,7 +1291,7 @@ input.search-icon{
     background-repeat: no-repeat;
     background-position: center center;
     text-indent: -1000px;
-    /*Css props below are required for IE*/
+        /*Css props below are required for IE*/
     font-size: 0;
     display:block;
     line-height: 0;
@@ -1478,4 +1485,211 @@ table.discovery-filters th.new-filter-header
 
 .upload-rioxx-version-warning h3 {
     margin-bottom:10px;
+#aspect_submission_StepTransformer_div_submit-describe select {
+    max-width: 500px;
+}
+
+#com_atmire_xmlui_compliance_ItemComplianceMain_div_item-compliance h2,
+#com_atmire_xmlui_compliance_ItemComplianceMain_div_item-compliance
+{
+    padding-top:10px;
+}
+
+.compliance-return-link{
+    padding-top:10px;
+    display: block;
+}
+
+.compliance-section, .exceptions-section {
+    margin-bottom: 15px;
+}
+
+.compliance-section ul {
+    margin-left: 0px;
+}
+
+.compliance-section span::before {
+    width: 15px;
+    display: inline-block;
+}
+
+
+.compliance-section li {
+    list-style: none;
+    padding-top:5px;
+}
+
+.compliance-section li.compliant {
+    color: #007800;
+}
+
+.compliance-section li.violating,
+.compliance-error{
+    color: #e38d13;
+}
+
+span.rule-description, span.rule-resolution {
+    display: block;
+    margin: 5px 30px;
+}
+span.rule-description-text, .rule-resolution-text {
+    font-family: sans-serif;
+}
+
+#aspect_xmlworkflow_WorkflowTransformer_div_item-compliance,
+#aspect_submission_StepTransformer_list_item-compliance-list{
+    padding-bottom: 20px;
+}
+
+#aspect_submission_StepTransformer_list_submit-compliance-1 {
+    margin-bottom:0px;
+}
+
+ol#aspect_submission_StepTransformer_list_ref-compliance-exceptions label {
+    display: inherit;
+}
+#aspect_submission_StepTransformer_list_ref-compliance-exceptions {
+    margin-bottom: 20px;
+}
+div#aspect_submission_StepTransformer_div_dropdownDivision {
+    margin-bottom: 10px;
+}
+
+.news-div {
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+.top-information-bar .top-information-bar-not-compliant, .resolution-summary-bar{
+    background-image: linear-gradient(to bottom,#f0ad4e 0,#eb9316 100%);
+    border-color: #e38d13;
+}
+
+.top-information-bar .top-information-bar-compliant{
+    background-image: linear-gradient(to bottom,#5cb85c 0,#419641 100%);
+    border: 1px solid #3e8f3e;
+    margin-bottom:20px;
+}
+
+.top-information-bar .top-information-bar-not-applicable{
+    background-image: linear-gradient(to bottom,#5bc0de 0,#2aabd2 100%);
+    border: 1px solid #28a4c9;
+    margin-bottom:20px;
+}
+
+.top-information-bar p {
+    padding: 10px;
+    font-size: 16px;
+    color:white;
+    font-weight: bold;
+}
+
+.resolution-summary-bar {
+    color: white;
+    padding: 10px;
+    margin-bottom:20px;
+}
+
+.category-name, .exceptions-section-title {
+    font-size: 150%;
+    margin-bottom: 10px;
+    color: #1F3F5E;
+}
+
+.related-data-title {
+    font-size: 182%;
+    margin-bottom: 15px;
+    color: #1F3F5E;
+    font-weight: bold;
+}
+
+.question-circle, .category-name {
+    display: inline-block;
+}
+
+.fa-question-circle {
+    margin-left:5px;
+    text-decoration: none;
+}
+
+.not-applicable-section {
+    color:gray;
+}
+
+.tooltip{
+    display: inline;
+    position: relative;
+    z-index:100;
+    cursor: default;
+    text-decoration: none;
+    padding-right: 10px;
+}
+
+.tooltip:hover{
+    display: inline;
+    position: relative;
+}
+
+.tooltip:hover:after{
+    background: #333;
+    background: rgb(31, 63, 94);
+    border-radius: 5px;
+    bottom: 26px;
+    color: #fff;
+    content: attr(href);
+    left: -20px;
+    padding: 5px 15px;
+    position: absolute;
+    z-index: 98;
+    width: 220px;
+}
+
+.tooltip:hover:before{
+    border: solid;
+    border-color: rgb(31, 63, 94) transparent;
+    border-width: 6px 6px 0 6px;
+    bottom: 20px;
+    content: "";
+    left: 10px;
+    position: absolute;
+    z-index: 99;
+}
+
+.all-rules a{
+    float:right;
+    margin-top:-15px;
+}
+
+.not-applicable-rule, .not-applicable-section p, .not-applicable-section span {
+    color:gray !important;
+}
+
+.related-data-section {
+    margin-bottom:15px;
+}
+
+#aspect_xmlworkflow_WorkflowTransformer_div_compliance-wrapper {
+    margin-top:20px;
+}
+
+.not-applicable-text {
+    display: inline-block;
+}
+
+div#aspect_submission_StepTransformer_div_help-section {
+    padding-top: 3px;
+}
+
+.estimated-help-paragraph {
+    margin-top: 15px;
+}
+
+#aspect_compliance_REFItemComplianceMain_div_item-compliance .top-information-bar,
+#aspect_compliance_RIOXXItemComplianceMain_div_item-compliance .top-information-bar,
+#aspect_xmlworkflow_WorkflowTransformer_div_compliance-wrapper .top-information-bar {
+    margin-top: 15px;
+}
+
+#aspect_submission_StepTransformer_div_ref-compliance p, #aspect_submission_StepTransformer_div_ref-compliance ul {
+    font-weight: bold;
 }

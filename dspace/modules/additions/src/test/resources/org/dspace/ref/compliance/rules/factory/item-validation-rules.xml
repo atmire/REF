@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<validation-rules>
+    <category ordinal="1" name="Category 1">
+        <rules>
+            <rule type="notBlank">
+                <field>rioxxterms.type</field>
+                <fieldDescription>output type</fieldDescription>
+                <exceptions>
+                    <rule type="value">
+                        <field>ref.exception.conferenceProceeding</field>
+                        <fieldDescription>Conference proceeding status</fieldDescription>
+                        <value>true</value>
+                    </rule>
+                </exceptions>
+            </rule>
+            <rule type="value">
+                <field>rioxxterms.version</field>
+                <fieldDescription>version of deposited file</fieldDescription>
+                <value>AM</value>
+                <value>P</value>
+                <value>VoR</value>
+                <value>CVoR</value>
+                <value>EVoR</value>
+            </rule>
+        </rules>
+    </category>
+    <category ordinal="2" name="Category 2">
+        <rules>
+            <rule type="discoverable">
+                <exceptions>
+                    <rule type="value">
+                        <field>archived</field>
+                        <fieldDescription>archived status</fieldDescription>
+                        <value>false</value>
+                    </rule>
+                </exceptions>
+            </rule>
+            <rule type="countGreaterThan">
+                <field>bitstreams</field>
+                <value>0</value>
+            </rule>
+            <rule type="dateRangeSmallerThan">
+                <preconditions>
+                    <rule type="value">
+                        <field>field.to.determine</field>
+                        <fieldDescription>specific field</fieldDescription>
+                        <value>foobar</value>
+                    </rule>
+                </preconditions>
+                <from>dc.date.from</from>
+                <to>dc.date.to</to>
+                <fieldDescription>embargo period</fieldDescription>
+            </rule>
+        </rules>
+    </category>
+    <exceptions>
+        <rule type="value">
+            <field>archived</field>
+            <fieldDescription>archived status</fieldDescription>
+            <value>false</value>
+        </rule>
+        <rule type="value">
+            <field>test</field>
+            <fieldDescription>test</fieldDescription>
+            <value>test</value>
+        </rule>
+    </exceptions>
+</validation-rules>

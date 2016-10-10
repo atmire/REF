@@ -26,7 +26,7 @@ public class ContextScript extends Script {
         Script.mainImpl(args);
     }
 
-    protected void mainImpl(String[] args) {
+    public void mainImpl(String[] args) {
         context = null;
         try {
             context = new Context();

@@ -229,17 +229,16 @@
        -->
 
       <!--Step 4 will be to Upload the item -->
-      <step>
-        <heading>submit.progressbar.upload</heading>
-        <processing-class>org.dspace.submit.step.UploadStep</processing-class>
-        <jspui-binding>org.dspace.app.webui.submit.step.JSPUploadStep</jspui-binding>
-		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.UploadStep</xmlui-binding>
-        <workflow-editable>true</workflow-editable>
-      </step>
-      
+      <!--<step>-->
+        <!--<heading>submit.progressbar.upload</heading>-->
+        <!--<processing-class>org.dspace.submit.step.UploadStep</processing-class>-->
+        <!--<jspui-binding>org.dspace.app.webui.submit.step.JSPUploadStep</jspui-binding>-->
+		<!--<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.UploadStep</xmlui-binding>-->
+        <!--<workflow-editable>true</workflow-editable>-->
+      <!--</step>-->
 
        <!-- Step 4 Upload Item with Embargo Features
-            to enable this step, please make sure to comment-out the previous step "UploadStep"  
+            to enable this step, please make sure to comment-out the previous step "UploadStep"      -->
        <step>
            <heading>submit.progressbar.upload</heading>
            <processing-class>org.dspace.submit.step.UploadWithEmbargoStep</processing-class>
@@ -247,9 +246,19 @@
            <xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.UploadWithEmbargoStep</xmlui-binding>
            <workflow-editable>true</workflow-editable>
        </step>
-       -->
 
- 	  <!--Step 5 will be to Verify/Review everything -->
+
+       <!--Step 5 will allow a user to select REF exceptions for REF applicable submissions -->
+       <step>
+           <heading>submit.progressbar.refexception</heading>
+           <processing-class>com.atmire.ref.compliance.submission.REFExceptionStep</processing-class>
+           <xmlui-binding>com.atmire.xmlui.compliance.submission.REFExceptionStep</xmlui-binding>
+           <workflow-editable>true</workflow-editable>
+           <type-binding>condition.ref.applicable.step</type-binding>
+       </step>
+
+
+       <!--Step 6 will be to Verify/Review everything -->
  	  <step>
         <heading>submit.progressbar.verify</heading>
         <processing-class>org.dspace.submit.step.VerifyStep</processing-class>
@@ -268,7 +277,26 @@
 		<workflow-editable>false</workflow-editable>
       </step>
 
-      <!--Step 7 will be to Sign off on the License-->
+       <!--Step 8 will give an overview of the REF compliance-->
+       <step>
+           <heading>submit.progressbar.ref.compliance</heading>
+           <processing-class>org.dspace.ref.compliance.submission.REFComplianceStep</processing-class>
+           <xmlui-binding>com.atmire.xmlui.compliance.submission.REFComplianceStep</xmlui-binding>
+           <workflow-editable>true</workflow-editable>
+           <type-binding>condition.ref.applicable.step</type-binding>
+       </step>
+
+       <step>
+           <heading>submit.progressbar.rioxx.compliance</heading>
+           <processing-class>org.dspace.ref.compliance.submission.RIOXXComplianceStep</processing-class>
+           <xmlui-binding>com.atmire.xmlui.compliance.submission.RIOXXComplianceStep</xmlui-binding>
+           <workflow-editable>true</workflow-editable>
+           <type-binding>condition.ref.applicable.step</type-binding>
+           <submission-editable>false</submission-editable>
+       </step>
+
+
+       <!--Step 8 will be to Sign off on the License-->
       <step>
         <heading>submit.progressbar.license</heading>
         <processing-class>org.dspace.submit.step.LicenseStep</processing-class>
@@ -276,9 +304,9 @@
 		<xmlui-binding>org.dspace.app.xmlui.aspect.submission.submit.LicenseStep</xmlui-binding>
 		<workflow-editable>false</workflow-editable>
       </step>
-
-
      
+
+
    </submission-process>
 
  </submission-definitions>

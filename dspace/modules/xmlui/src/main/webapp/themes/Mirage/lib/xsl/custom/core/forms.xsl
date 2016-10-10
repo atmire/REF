@@ -41,4 +41,11 @@
         </xsl:if>
     </xsl:template>
 
+    <xsl:template match="dri:help" mode="compositeComponent">
+        <span class="composite-help">
+            <i18n:text>
+                <xsl:apply-templates/>
+            </i18n:text></span>
+    </xsl:template>
+
 </xsl:stylesheet>
