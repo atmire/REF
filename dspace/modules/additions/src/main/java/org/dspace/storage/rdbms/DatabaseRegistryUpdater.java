@@ -7,7 +7,6 @@
  */
 package org.dspace.storage.rdbms;
 
-<<<<<<< HEAD
 import org.dspace.administer.MetadataImporter;
 import org.dspace.administer.RegistryLoader;
 import org.dspace.core.ConfigurationManager;
@@ -20,16 +19,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.sql.Connection;
-=======
-import java.io.*;
-import java.sql.*;
-import org.dspace.administer.*;
-import org.dspace.core.*;
-import org.dspace.eperson.*;
-import org.flywaydb.core.api.*;
-import org.flywaydb.core.api.callback.*;
-import org.slf4j.*;
->>>>>>> staging_5x
+
 
 /**
  * This is a FlywayCallback class which automatically updates the

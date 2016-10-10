@@ -2154,66 +2154,13 @@
     <message key="xmlui.statisticsGoogleAnalytics.downloads.title">File Downloads</message>
 
 
-<<<<<<< HEAD
 	<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
                           dri2xhtml
 
 		!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-=======
-    <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-
-
-
-
-
-<<<<<<< HEAD
-	<!-- structural.xsl -->
-	<message key="xmlui.dri2xhtml.structural.footer-promotional">
-		<a href="http://di.tamu.edu" id="ds-logo-link">
-			<span id="ds-footer-logo">&#160;</span>
-		</a>
-		<p>
-			This website is using Manakin, a new front end for DSpace created by Texas A&amp;M University
-			Libraries. The interface can be extensively modified through Manakin Aspects and XSL based Themes.
-			For more information visit
-			<a href="http://di.tamu.edu">http://di.tamu.edu</a> and
-			<a href="http://dspace.org">http://dspace.org</a>
-		</p>
-	</message>
-	<message key="xmlui.dri2xhtml.structural.contact-link">Contact Us</message>
-	<message key="xmlui.dri2xhtml.structural.feedback-link">Send Feedback</message>
-
-    <message key="xmlui.dri2xhtml.structural.head-subtitle">DSpace Repository</message>
-
-    <message key="xmlui.dri2xhtml.structural.profile">Profile: </message>
-    <message key="xmlui.dri2xhtml.structural.logout">Logout</message>
-    <message key="xmlui.dri2xhtml.structural.login">Login</message>
-
-    <message key="xmlui.dri2xhtml.structural.search">Search DSpace</message>
-    <message key="xmlui.dri2xhtml.structural.search-advanced">Advanced Search</message>
-    <message key="xmlui.dri2xhtml.structural.search-in-community">This Community</message>
-    <message key="xmlui.dri2xhtml.structural.search-in-collection">This Collection</message>
-
-    <message key="xmlui.dri2xhtml.structural.pagination-previous">Previous Page</message>
-    <message key="xmlui.dri2xhtml.structural.pagination-info">Now showing items {0}-{1} of {2}</message>
-    <message key="xmlui.dri2xhtml.structural.pagination-next">Next Page</message>
-
-    <message key="xmlui.dri2xhtml.structural.link_cc">Creative Commons</message>
-    <message key="xmlui.dri2xhtml.structural.link_original_license">Original License</message>
-
-
-	<!-- DS-METS-1.0-MODS.xsl -->
-	<!-- DS-METS-1.0-DIM.xsl -->
-	<!-- DS-METS-1.0-QDC.xsl -->
-	<message key="xmlui.dri2xhtml.METS-1.0.no-preview">No preview available</message>
-	<message key="xmlui.dri2xhtml.METS-1.0.no-title">Untitled</message>
-	<message key="xmlui.dri2xhtml.METS-1.0.no-author">Unknown author</message>
-	<message key="xmlui.dri2xhtml.METS-1.0.non-conformant">
-		This is not a DSpace object conformant to the METS 1.0 profile and as such cannot be
-=======
     <!-- structural.xsl -->
     <message key="xmlui.dri2xhtml.structural.footer-promotional">
         <a href="http://di.tamu.edu" id="ds-logo-link">
@@ -2257,13 +2204,11 @@
     <message key="xmlui.dri2xhtml.METS-1.0.no-author">Unknown author</message>
     <message key="xmlui.dri2xhtml.METS-1.0.non-conformant">
         This is not a DSpace object conformant to the METS 1.0 profile and as such cannot be
->>>>>>> staging_5x
         rendered effectively. You can override either the template that handles the general
         case in dri2xhtml to perform the needed function, or create your template to match
         whatever profile you use.
     </message>
 
-<<<<<<< HEAD
 	<message key="xmlui.dri2xhtml.METS-1.0.item-preview">Preview</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-title">Title</message>
 	<message key="xmlui.dri2xhtml.METS-1.0.item-author">Author</message>
