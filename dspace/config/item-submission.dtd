@@ -18,7 +18,7 @@
  <!-- (The "select collection" step *must* be here)            -->
  <!ELEMENT step-definitions (step+) >
  
- <!ELEMENT step (heading?, processing-class, jspui-binding?, xmlui-binding?, workflow-editable?) >
+ <!ELEMENT step (heading?, processing-class, jspui-binding?, xmlui-binding?, workflow-editable?, type-binding?, submission-editable?) >
  <!ATTLIST step id NMTOKEN #IMPLIED>
  
  <!ELEMENT heading (#PCDATA) >
@@ -26,7 +26,9 @@
  <!ELEMENT jspui-binding (#PCDATA)>
  <!ELEMENT xmlui-binding (#PCDATA)>
  <!ELEMENT workflow-editable (#PCDATA)>
- 
+ <!ELEMENT type-binding (#PCDATA)>
+ <!ELEMENT submission-editable (#PCDATA)>
+
  <!-- 'submission-definitions' must contain at least one       -->
  <!-- 'submission-process' node                                -->
  <!ELEMENT submission-definitions (submission-process+)>

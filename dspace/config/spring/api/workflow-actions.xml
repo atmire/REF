@@ -12,6 +12,9 @@
     <bean id="finaleditactionAPI" class="org.dspace.xmlworkflow.state.actions.processingaction.FinalEditAction" scope="prototype"/>
     <bean id="singleuserreviewactionAPI" class="org.dspace.xmlworkflow.state.actions.processingaction.SingleUserReviewAction" scope="prototype"/>
 
+    <bean id="refcomplianceactionAPI" class="org.dspace.ref.compliance.workflow.REFComplianceAction" scope="prototype"/>
+    <bean id="rioxxcomplianceactionAPI" class="org.dspace.ref.compliance.workflow.RIOXXComplianceAction" scope="prototype"/>
+
     <bean id="selectrevieweractionAPI" class="org.dspace.xmlworkflow.state.actions.processingaction.SelectReviewerAction" scope="prototype">
         <property name="roleId" value="reviewer"/>
     </bean>
@@ -62,6 +65,20 @@
         <property name="processingAction" ref="scorereviewactionAPI" />
         <property name="requiresUI" value="true"/>
     </bean>
+
+    <bean id="refcomplianceaction" class="org.dspace.xmlworkflow.state.actions.WorkflowActionConfig" scope="prototype">
+        <constructor-arg type="java.lang.String" value="refcomplianceaction"/>
+        <property name="processingAction" ref="refcomplianceactionAPI"/>
+        <property name="requiresUI" value="true"/>
+    </bean>
+
+    <bean id="rioxxcomplianceaction" class="org.dspace.xmlworkflow.state.actions.WorkflowActionConfig" scope="prototype">
+        <constructor-arg type="java.lang.String" value="rioxxcomplianceaction"/>
+        <property name="processingAction" ref="rioxxcomplianceactionAPI"/>
+        <property name="requiresUI" value="true"/>
+    </bean>
+
+
 
     <!--Autmatic step that evaluates scores (workflow.score) and checks if they match the configured minimum for archiving -->
     <bean id="evaluationaction" class="org.dspace.xmlworkflow.state.actions.WorkflowActionConfig" scope="prototype">
