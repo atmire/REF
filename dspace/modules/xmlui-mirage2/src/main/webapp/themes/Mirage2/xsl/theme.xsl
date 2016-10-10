@@ -50,6 +50,8 @@
     <xsl:import href="aspect/submission/submission.xsl"/>
     <xsl:import href="custom/core/page-structure.xsl"/>
     <xsl:import href="custom/core/forms.xsl"/>
+    <xsl:import href="custom/multiple-funders.xsl"/>
+    <xsl:import href="custom/aspect/general/choice-authority-control.xsl"/>
     <xsl:import href="custom/compliance/item-compliance.xsl"/>
     <xsl:output indent="yes"/>
 
