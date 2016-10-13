@@ -66,7 +66,10 @@ public class WorkflowRequirementsManager {
             //If enough users have claimed/finished this step then remove the tasks
             XmlWorkflowManager.deleteAllPooledTasks(c, wfi);
         }
+
+        c.turnOffAuthorisationSystem();
         wfi.update();
+        c.restoreAuthSystemState();
     }
 
     public static void removeClaimedUser(Context c, XmlWorkflowItem wfi, EPerson user, String stepID) throws SQLException, IOException, WorkflowConfigurationException, AuthorizeException {
