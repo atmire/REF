@@ -10,11 +10,17 @@
                         audit requirements for Open access in the post-2014 Research Excellence Framework (REF)
                     </xref>.
                 </p>
-                <p>This installation of DSpace 4.4 has been enhanced with the <xref target="https://github.com/atmire/RIOXX/">Atmire RIOXX patch</xref> and a number of new developments including:</p>
+                <p>This installation of DSpace 5.6 has been enhanced with the <xref target="https://github.com/atmire/RIOXX/">Atmire RIOXX patch</xref> and a number of new developments including:</p>
                 <list>
                     <item>REF specific metadata: Date of First Compliant Deposit (FCD), Version of FCD, Date of first compliant open access (FOA) and REF target panel.</item>
                     <item>REF accepted exceptions, including technical exceptions, access exceptions, deposit exceptions and other exceptions.</item>
-                    <item>Compliance checks for Conference papers/Proceeding/Abstract and Journal Article/Review
+                    <item>REF Compliance checks for Conference papers/Proceeding/Abstract and Journal Article/Review
+                        <list>
+                            <item>During submission</item>
+                            <item>On archived items</item>
+                        </list>
+                    </item>
+                    <item>RIOXX Compliance checks
                         <list>
                             <item>During submission</item>
                             <item>On archived items</item>
@@ -40,11 +46,11 @@
                 <p>Password: The password for both of these accounts is the abbreviation of &quot;Higher Education Funding Council for England&quot;, in lowercase.</p>
                 <p>You can report your questions, comments and other feedback in this google document:</p>
                 <p><xref target="http://bit.ly/hefce-ref-community-feedback">http://bit.ly/hefce-ref-community-feedback</xref></p>
-                <p>The community feedback phase is scheduled to run from <hi rend="bold">May 16th until June 6th</hi>. After this feedback phase, Atmire will work on resolving this feedback and port this functionality to DSpace 5.</p>
+                <p>The community feedback phase has been extended to <hi rend="bold">August 31st</hi>. After this feedback phase, Atmire will work on resolving this feedback and port this functionality to DSpace 5.</p>
             </div>
             <div id="file.news.div.news3" n="news3" rend="news-div">
                 <head>When can I install this functionality in my DSpace?</head>
-                <p>The code for these features and deployment instructions will be made available on Github in July 2016.</p>
+                <p>The code for these features and deployment instructions are expected to become available on Github in October 2016.</p>
             </div>
             <div id="file.news.div.news4" n="news4" rend="news-div">
                 <head>Email disabled</head>
