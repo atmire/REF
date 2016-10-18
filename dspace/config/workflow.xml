@@ -25,7 +25,7 @@
         </step>
         <step id="editstep" role="editor" userSelectionMethod="claimaction">
             <outcomes>
-                <step status="0">refcompliancestep</step>
+                <step status="0">finaleditstep</step>
             </outcomes>
             <actions>
                 <action id="editaction"/>
