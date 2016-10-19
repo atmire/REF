@@ -1,16 +1,24 @@
 package org.dspace.ref.compliance.service;
 
-import com.atmire.utils.*;
-import java.util.*;
-import org.apache.commons.lang.*;
-import org.apache.log4j.*;
-import org.dspace.content.*;
-import org.dspace.core.*;
-import org.dspace.ref.compliance.result.*;
-import org.dspace.ref.compliance.rules.*;
-import org.dspace.ref.compliance.rules.exception.*;
-import org.dspace.ref.compliance.rules.factory.*;
-import org.dspace.util.subclasses.*;
+import com.atmire.utils.EmbargoUtils;
+import com.atmire.utils.Metadatum;
+import org.apache.commons.collections.MapUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
+import org.dspace.content.DCDate;
+import org.dspace.content.DCValue;
+import org.dspace.content.Item;
+import org.dspace.core.Context;
+import org.dspace.ref.compliance.result.ComplianceResult;
+import org.dspace.ref.compliance.rules.CompliancePolicy;
+import org.dspace.ref.compliance.rules.exception.ValidationRuleDefinitionException;
+import org.dspace.ref.compliance.rules.factory.ComplianceCategoryRulesFactory;
+import org.dspace.util.subclasses.Metadata;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Implementation of {@link ComplianceCheckService}
@@ -114,8 +122,9 @@ public class ComplianceCheckServiceBean implements ComplianceCheckService {
     private List<Metadata> addFakeValues(Context context, Item item, Map<String, String> fakeFieldMap) {
         List<Metadata> fakeFields = new ArrayList<Metadata>();
 
-        for (String field : fakeFieldMap.keySet()) {
-            DCValue[] dcValues = item.getMetadata(field);
+        if (MapUtils.isNotEmpty(fakeFieldMap)) {
+            for (String field : fakeFieldMap.keySet()) {
+                DCValue[] dcValues = item.getMetadata(field);
 
                 if (dcValues.length == 0) {
                     Metadata metadata = org.dspace.util.MetadataFieldString.encapsulate(field);
