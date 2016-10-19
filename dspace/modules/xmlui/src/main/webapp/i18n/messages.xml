@@ -2639,7 +2639,7 @@
     <message key="xmlui.compliance.submission.ExceptionStep.specificException.para2.exceptionFreeText">You have to provide an explanation in this field before this exception becomes active.</message>
 
     <message key="xmlui.compliance.submission.ExceptionStep.compliant">It appears that your submission is REF compliant. This means you do not have to select an exception above.</message>
-    <message key="xmlui.compliance.submission.ExceptionStep.not_compliant">Your submission is currently not REF compliant. You can select an exception above or proceed to the ‘REF Compliance’ step to check why your submission is not compliant. The following requirements are not met:</message>
+    <message key="xmlui.compliance.submission.ExceptionStep.not_compliant">Your submission is currently not REF compliant. You can select an exception above related to the requirements listed below or proceed to the ‘REF Compliance’ step to check why your submission is not compliant. The following requirements are not met:</message>
 
     <message key="aspect.submission.StepTransformer.field.refterms.panel.hint">
         <p>Please select one of the following options to select the unit of assessment's main panel. The details of these panels can be found <a href="http://www.ref.ac.uk/panels/unitsofassessment/">here</a>.</p>

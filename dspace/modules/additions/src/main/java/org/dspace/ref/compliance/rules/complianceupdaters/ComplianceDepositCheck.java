@@ -8,7 +8,6 @@ import org.dspace.core.Context;
  */
 public interface ComplianceDepositCheck {
 
-    public boolean checkAndUpdateCompliance(Context context, Item item);
-
+    void checkAndUpdateCompliance(Context context, Item item);
 
 }
