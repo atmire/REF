@@ -38,8 +38,6 @@
 
     <!-- RIOXX Compliance check service -->
     <bean class="org.dspace.ref.compliance.service.ComplianceCheckServiceBean" id="rioxxComplianceCheckService" autowire-candidate="true">
-        <property name="fakeIfEmptyDuringValidation" ref="fakeIfEmptyDuringValidation"/>
-        <property name="fakeIfEmptyDuringUnarchivedValidation" ref="fakeIfEmptyDuringUnarchivedValidation"/>
         <property name="rulesFactory" ref="rioxxComplianceCategoryRulesFactoryBean"/>
         <property name="identifier" value="rioxx"/>
     </bean>

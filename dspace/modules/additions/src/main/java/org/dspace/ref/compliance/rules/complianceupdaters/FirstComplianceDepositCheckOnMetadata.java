@@ -1,12 +1,15 @@
 package org.dspace.ref.compliance.rules.complianceupdaters;
 
 import com.atmire.utils.Metadatum;
-import java.util.*;
-import org.apache.commons.lang3.*;
-import org.dspace.content.*;
-import org.dspace.core.*;
-import org.dspace.eperson.*;
-import org.springframework.beans.factory.annotation.*;
+import org.apache.commons.lang3.StringUtils;
+import org.dspace.content.DCDate;
+import org.dspace.content.Item;
+import org.dspace.content.MetadataSchema;
+import org.dspace.core.Context;
+import org.dspace.eperson.EPerson;
+import org.springframework.beans.factory.annotation.Required;
+
+import java.util.Set;
 
 /**
  * Created by jonas - jonas@atmire.com on 23/03/16.
@@ -45,7 +48,7 @@ public abstract class FirstComplianceDepositCheckOnMetadata implements Complianc
     }
 
 
-    public boolean checkAndUpdateCompliance(Context context, Item item){
+    public void checkAndUpdateCompliance(Context context, Item item){
 
         if(processingRequired(item) && compliantValuesApply(item)){
 
@@ -55,7 +58,6 @@ public abstract class FirstComplianceDepositCheckOnMetadata implements Complianc
             }
 
         }
-        return compliantValuesApply(item);
     }
 
     private boolean processingRequired(Item item) {

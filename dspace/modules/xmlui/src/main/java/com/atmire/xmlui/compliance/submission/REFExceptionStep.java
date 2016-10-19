@@ -1,23 +1,27 @@
 package com.atmire.xmlui.compliance.submission;
 
-import com.atmire.ref.compliance.submission.*;
-import java.io.*;
-import java.sql.*;
-import java.util.*;
-import org.apache.cocoon.*;
-import org.apache.commons.lang3.*;
-import org.dspace.app.xmlui.aspect.submission.*;
-import org.dspace.app.xmlui.wing.*;
+import com.atmire.ref.compliance.submission.ExceptionInformation;
+import org.apache.cocoon.ProcessingException;
+import org.apache.commons.lang3.StringUtils;
+import org.dspace.app.xmlui.aspect.compliance.ComplianceUI;
+import org.dspace.app.xmlui.aspect.submission.AbstractSubmissionStep;
+import org.dspace.app.xmlui.wing.Message;
+import org.dspace.app.xmlui.wing.WingException;
 import org.dspace.app.xmlui.wing.element.*;
-import org.dspace.app.xmlui.wing.element.Item;
-import org.dspace.app.xmlui.wing.element.List;
-import org.dspace.authorize.*;
+import org.dspace.authorize.AuthorizeException;
 import org.dspace.content.Collection;
-import org.dspace.content.*;
-import org.dspace.ref.compliance.result.*;
-import org.dspace.ref.compliance.service.*;
-import org.dspace.utils.*;
-import org.xml.sax.*;
+import org.dspace.content.Metadatum;
+import org.dspace.ref.compliance.result.CategoryComplianceResult;
+import org.dspace.ref.compliance.result.ComplianceResult;
+import org.dspace.ref.compliance.service.ComplianceCheckService;
+import org.dspace.utils.DSpace;
+import org.xml.sax.SAXException;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Created by jonas - jonas@atmire.com on 08/04/16.
@@ -60,45 +64,51 @@ public class REFExceptionStep extends AbstractSubmissionStep {
 
         div.setHead(T_head);
 
-        div.addPara(T_info);
-
-        String[] specifiedExceptions =  new DSpace().getServiceManager().getServiceByName("configuredExceptions", String[].class);
-
-        List form = div.addList("ref-compliance-exceptions", List.TYPE_ORDERED);
-
-        Item item1 = form.addItem("exceptions-list", null);
-        Radio exceptions = item1.addRadio("exception-options");
-        exceptions.addOption(true,"none", T_none);
-
         org.dspace.content.Item item = submission.getItem();
-        addBaseExceptionSelection(specifiedExceptions, exceptions, item);
-
-
-        for(int i = 0; i<specifiedExceptions.length; i++){
-            String specifiedException = specifiedExceptions[i];
-            addSpecifiedExceptionPart(div, item, specifiedException);
-        }
-
         ComplianceResult complianceResult = complianceCheckService.checkCompliance(context, item);
 
-        Division complianceDiv = div.addDivision("ref-compliance", "ref-compliance");
+        //Only show exception select options when the item is applicable for REF.
+        if(complianceResult.isApplicable()) {
+            div.addPara(T_info);
 
-        if(complianceResult.isCompliant()){
-            complianceDiv.addPara().addContent(T_compliant);
-        }
-        else {
-            complianceDiv.addPara().addContent(T_not_compliant);
-            List list = complianceDiv.addList("requirements-list");
+            String[] specifiedExceptions = new DSpace().getServiceManager().getServiceByName("configuredExceptions", String[].class);
 
-            for (CategoryComplianceResult categoryComplianceResult : complianceResult.getOrderedCategoryResults()) {
-                if(!categoryComplianceResult.isCompliant()){
-                    list.addItem().addContent(categoryComplianceResult.getCategoryName());
+            List form = div.addList("ref-compliance-exceptions", List.TYPE_ORDERED);
+
+            Item item1 = form.addItem("exceptions-list", null);
+            Radio exceptions = item1.addRadio("exception-options");
+            exceptions.addOption(true, "none", T_none);
+
+            addBaseExceptionSelection(specifiedExceptions, exceptions, item);
+
+            for (int i = 0; i < specifiedExceptions.length; i++) {
+                String specifiedException = specifiedExceptions[i];
+                addSpecifiedExceptionPart(div, item, specifiedException);
+            }
+
+            Division complianceDiv = div.addDivision("ref-compliance", "ref-compliance");
+
+            if (complianceResult.isCompliant()) {
+                complianceDiv.addPara().addContent(T_compliant);
+            } else {
+                complianceDiv.addPara().addContent(T_not_compliant);
+                List list = complianceDiv.addList("requirements-list");
+
+                for (CategoryComplianceResult categoryComplianceResult : complianceResult.getOrderedCategoryResults()) {
+                    if (!categoryComplianceResult.isCompliant()) {
+                        list.addItem().addContent(categoryComplianceResult.getCategoryName());
+                    }
                 }
             }
+
+        } else {
+            //Inform the user that his item is not applicable and that he doesn't need to select an exception.
+            ComplianceUI complianceUI = new ComplianceUI();
+            complianceUI.setIdentifier("ref");
+            complianceUI.addItemNotApplicableSection(div, complianceResult);
         }
 
-        List submit = div.addList("submit-exception",List.TYPE_FORM);
-
+        List submit = div.addList("submit-exception", List.TYPE_FORM);
         addControlButtons(submit);
     }
 

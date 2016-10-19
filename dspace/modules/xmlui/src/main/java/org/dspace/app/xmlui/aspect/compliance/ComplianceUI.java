@@ -1,15 +1,20 @@
 package org.dspace.app.xmlui.aspect.compliance;
 
-import java.sql.*;
-import org.apache.cocoon.components.flow.*;
-import org.apache.commons.collections.*;
-import org.apache.commons.lang.*;
-import static org.dspace.app.xmlui.wing.AbstractWingTransformer.*;
-import org.dspace.app.xmlui.wing.*;
+import org.apache.cocoon.components.flow.WebContinuation;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
+import org.dspace.app.xmlui.wing.Message;
+import org.dspace.app.xmlui.wing.WingException;
 import org.dspace.app.xmlui.wing.element.*;
-import org.dspace.core.*;
-import org.dspace.ref.compliance.result.*;
-import org.dspace.ref.compliance.service.*;
+import org.dspace.core.Context;
+import org.dspace.ref.compliance.result.CategoryComplianceResult;
+import org.dspace.ref.compliance.result.ComplianceResult;
+import org.dspace.ref.compliance.result.RuleComplianceResult;
+import org.dspace.ref.compliance.service.ComplianceCheckService;
+
+import java.sql.SQLException;
+
+import static org.dspace.app.xmlui.wing.AbstractWingTransformer.message;
 
 /**
  * Created by Philip Vissenaekens (philip at atmire dot com)
@@ -311,7 +316,7 @@ public class ComplianceUI {
 
     }
 
-    private void addItemNotApplicableSection(Division div, ComplianceResult result) throws WingException {
+    public void addItemNotApplicableSection(Division div, ComplianceResult result) throws WingException {
         Division notApplicableDiv = div.addDivision("item-not-applicable", "item-not-applicable");
 
         notApplicableDiv.addPara().addContent(new Message("default", T_not_applicable_help.getKey() + identifier));
