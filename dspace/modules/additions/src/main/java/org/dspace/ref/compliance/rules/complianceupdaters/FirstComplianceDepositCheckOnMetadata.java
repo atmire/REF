@@ -49,7 +49,7 @@ public abstract class FirstComplianceDepositCheckOnMetadata implements Complianc
     }
 
 
-    public boolean checkAndUpdateCompliance(Context context, Item item){
+    public void checkAndUpdateCompliance(Context context, Item item){
 
         if(processingRequired(item) && compliantValuesApply(item)){
 
@@ -59,7 +59,6 @@ public abstract class FirstComplianceDepositCheckOnMetadata implements Complianc
             }
 
         }
-        return compliantValuesApply(item);
     }
 
     private boolean processingRequired(Item item) {
