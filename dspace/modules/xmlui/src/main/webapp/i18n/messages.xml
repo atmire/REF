@@ -2694,4 +2694,18 @@
         </p>
     </message>
 
+    <message key="xmlui.XMLWorkflow.complianceCheck.reviewstep.claimaction">Accept/Reject</message>
+    <message key="xmlui.XMLWorkflow.complianceCheck.reviewstep.reviewaction">Accept/Reject</message>
+
+    <message key="xmlui.XMLWorkflow.complianceCheck.editstep.claimaction">Accept/Edit/Reject</message>
+    <message key="xmlui.XMLWorkflow.complianceCheck.editstep.editaction">Accept/Edit/Reject</message>
+
+    <message key="xmlui.XMLWorkflow.complianceCheck.refcompliancestep.claimaction">Item REF Compliance</message>
+    <message key="xmlui.XMLWorkflow.complianceCheck.refcompliancestep.refcomplianceaction">Item REF Compliance</message>
+
+    <message key="xmlui.XMLWorkflow.complianceCheck.rioxxcompliancestep.claimaction">Item RIOXX Compliance</message>
+    <message key="xmlui.XMLWorkflow.complianceCheck.rioxxcompliancestep.rioxxcomplianceaction">Item RIOXX Compliance</message>
+
+    <message key="xmlui.XMLWorkflow.complianceCheck.finaleditstep.claimaction">Final Accept/Edit</message>
+    <message key="xmlui.XMLWorkflow.complianceCheck.finaleditstep.finaleditaction">Final Accept/Edit</message>
 </catalogue>
