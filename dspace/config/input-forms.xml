@@ -93,8 +93,22 @@
           <repeatable>false</repeatable>
           <label>Date of Issue</label>
           <input-type>date</input-type>
-          <hint>Please give the date of previous publication or public distribution
+          <hint>Please give the date of print publication or public distribution
             below. You can leave out the day and/or month if they aren't
+            applicable.
+          </hint>
+          <required></required>
+        </field>
+
+        <field>
+          <dc-schema>refterms</dc-schema>
+          <dc-element>dateFirstOnline</dc-element>
+          <dc-qualifier></dc-qualifier>
+          <repeatable>false</repeatable>
+          <label>Date of Online Publication</label>
+          <input-type>date</input-type>
+          <hint>Please give the date of online publication or public distribution
+            here. You can leave out the day and/or month if they aren't
             applicable.
           </hint>
           <required></required>
