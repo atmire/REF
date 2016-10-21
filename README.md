@@ -532,37 +532,63 @@ The RIOXX rules XML file *dspace/config/rioxx-validation-rules.xml* can be edite
 The REF Compliance Checker patch uses a few specific metadata fields which we explain in this section.
 
 #### RIOXX Type (rioxxterms.type)
-TODO
+RIOXX type refers to the 'type' - the nature or genre of the content of the resource. Take care not to confuse this with dc:format.
+
+Values recorded here MUST be from the following controlled list of types:
+* Book
+* Book chapter
+* Book edited
+* Conference Paper/Proceeding/Abstract
+* Journal Article/Review
+* Manual/Guide
+* Monograph
+* Policy briefing report
+* Technical Report
+* Technical Standard
+* Thesis
+* Other
+* Consultancy Report
+* Working paper
+
+Only "Conference Paper/Proceeding/Abstract" and "Journal Article/Review" are applicable to the REF Open Access policy.
 
 #### Date of Acceptance (dcterms.dateAccepted)
-TODO
+The date on which the resource was accepted for publication. The date MUST be encoded using ISO 8601 (post–2004 versions) specifying year, month and day.
 
 #### Print Publication Date (dc.date.issued)
-TODO
+The date the resource was published on print.
 
 #### Online Publication Date (refterms.dateFirstOnline)
-TODO
-
-#### Online Publication Date (refterms.dateFirstOnline)
-TODO
-
-#### Date of first compliant deposit (refterms.dateFCD)
-TODO
+If the resource was not published on print, you can also fill in the online publication date in this field. It is also allowed to fill in both values.
 
 #### Version of first compliant deposit (refterms.versionFCD)
-TODO
+This field holds the compliant RIOXX version of the resource at the moment of deposit by the submitter. In case of workflows, the version can also be set by the corrected value of a reviewer. The compliant RIOXX versions are:
+ * Accepted Manuscript (AM)
+ * Proof (P)
+ * Version of Record (VoR)
+ * Corrected Version of Record (CVoR)
+ * Enhanced Version of Record (EVoR)
+ 
+*This field is automatically populated by the REF Compliance Checker and should NOT be part of the input forms or altered manually!*
+
+#### Date of first compliant deposit (refterms.dateFCD)
+The date the compliant version of the resource was deposited in the repository by the submitter (see also refterms.versionFCD). In case of workflows, this date can also be the moment a reviewer corrected the submission to be compliant.
+
+*This field is automatically populated by the REF Compliance Checker and should NOT be part of the input forms or altered manually!*
 
 #### Date of first compliant Open Access (refterms.dateFOA)
-TODO
+The first day the compliant version of the resource became available to download as open access.
+
+*This field is automatically populated by the REF Compliance Checker and should NOT be part of the input forms or altered manually!*
 
 #### REF Panel (refterms.panel)
-TODO
+The REF policy makes a number of assumptions about aspects of the next REF that have not yet been formally decided. This has been necessary to provide due notice to the sector of the policy requirement. The main assumption is that there will be a post-2014 REF that operates on substantially the same basis as the 2014 REF. For example, they assume that there will be four main panels with disciplinary remits broadly similar to those of the REF 2014 main panels. This metadata field holds the panel to which the submitter wants to apply.
 
 #### Embargo End Date
-TODO
+The last day of the embargo period of the resource. In a default DSpace installation, the item will be publicly available as open access past this date.
 
 ### REF applicable items
-TODO TOM
+The REF Open Access policy only applies to items that have RIOXX type 'Conference Paper/Proceeding/Abstract' (with an ISSN) or 'Journal Article/Review'. The item must have been accepted after 1 April 2016.
 
 ### REF exceptions
 TODO TOM
