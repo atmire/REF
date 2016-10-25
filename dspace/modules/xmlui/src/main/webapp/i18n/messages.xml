@@ -2566,7 +2566,7 @@
         <p>However it appears that this item is not applicable for the REF Open Access policy. This means you can safely ignore this page as this item will not be taken into account when evaluating REF compliance.</p>
         <p>If this item should be applicable for the REF Open Access policy, please click "Show rules" to view additional details on why this item is considered not applicable.</p>
     </message>
-    <message key="xmlui.compliance.ComplianceUI.not_applicable_help_rioxx">TODO not applicable help message</message>
+    <message key="xmlui.compliance.ComplianceUI.not_applicable_help_rioxx">Normally each item can be considered applicable for RIOXX compliance and you shouldn't see this message.</message>
     <message key="xmlui.compliance.ComplianceUI.resolution_summary_title">Resolution Summary:</message>
     <message key="xmlui.compliance.ComplianceUI.exceptions_section_title">Technical and Other Exceptions</message>
     <message key="xmlui.compliance.ComplianceUI.ref_related_data_title">REF Compliance Related Data</message>
