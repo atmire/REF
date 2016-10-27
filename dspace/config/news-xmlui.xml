@@ -6,30 +6,32 @@
             <div id="file.news.div.news1" n="news1" rend="news-div">
                 <p>Welcome to the REF Compliance Checker Demonstrator repository. In this repository you can test tools created
                     to assist institutions to comply with the
-                    <xref target="http://www.hefce.ac.uk/media/hefce/content/What,we,do/Research/OA/Open%20access%20in%20the%20next%20REF%20information%20and%20audit%20requirements.pdf">
+                    <xref target="http://www.hefce.ac.uk/pubs/year/2014/201407/">
                         audit requirements for Open access in the post-2014 Research Excellence Framework (REF)
                     </xref>.
                 </p>
                 <p>This installation of DSpace 5.6 has been enhanced with the <xref target="https://github.com/atmire/RIOXX/">Atmire RIOXX patch</xref> and a number of new developments including:</p>
                 <list>
-                    <item>REF specific metadata: Date of First Compliant Deposit (FCD), Version of FCD, Date of first compliant open access (FOA) and REF target panel.</item>
+                    <item>REF specific metadata: Date of First Compliant Deposit (FCD), Version of FCD, Date of First compliant Open Access (FOA) and REF target panel.</item>
                     <item>REF accepted exceptions, including technical exceptions, access exceptions, deposit exceptions and other exceptions.</item>
-                    <item>REF Compliance checks for Conference papers/Proceeding/Abstract and Journal Article/Review
+                    <item>REF Compliance checks for Conference Papers/Proceeding/Abstract and Journal Article/Review
                         <list>
                             <item>During submission</item>
+                            <item>In workflow review</item>
                             <item>On archived items</item>
                         </list>
                     </item>
                     <item>RIOXX Compliance checks
                         <list>
                             <item>During submission</item>
+                            <item>In workflow review</item>
                             <item>On archived items</item>
                         </list>
                     </item>
                 </list>
             </div>
             <div id="file.news.div.news2" n="news2" rend="news-div">
-                <head>Current development phase: Soliciting Community Feedback</head>
+                <head>Current development phase: REF Compliance Checker v1 Released</head>
                 <p>Following credentials can be used to log in and test the functionality:</p>
                 <p>
                     <table n="table1" id="credentials-table" rows="2" cols="2">
@@ -44,13 +46,14 @@
                     </table>
                 </p>
                 <p>Password: The password for both of these accounts is the abbreviation of &quot;Higher Education Funding Council for England&quot;, in lowercase.</p>
-                <p>You can report your questions, comments and other feedback in this google document:</p>
-                <p><xref target="http://bit.ly/hefce-ref-community-feedback">http://bit.ly/hefce-ref-community-feedback</xref></p>
-                <p>The community feedback phase has been extended to <hi rend="bold">August 31st</hi>. After this feedback phase, Atmire will work on resolving this feedback and port this functionality to DSpace 5.</p>
+                <p>You can report your questions, comments and other feedback on the Github Issues page:</p>
+                <p><xref target="https://github.com/atmire/REF/issues">https://github.com/atmire/REF/issues</xref></p>
+                <p>The community feedback phase was extended to <hi rend="bold">August 31st</hi>. After this feedback phase, Atmire resolved the final issues and made the source code available for DSpace 4 &amp; 5.</p>
             </div>
             <div id="file.news.div.news3" n="news3" rend="news-div">
                 <head>When can I install this functionality in my DSpace?</head>
-                <p>The code for these features and deployment instructions are expected to become available on Github in October 2016.</p>
+                <p>The code for these features and deployment instructions are available on Github: <xref target="https://github.com/atmire/REF">https://github.com/atmire/REF</xref></p>
+                <p>Detailed installation instructions and additional documentation can be found in the <xref target="https://github.com/atmire/REF/blob/master/README.md">README.md</xref> file.</p>
             </div>
             <div id="file.news.div.news4" n="news4" rend="news-div">
                 <head>Email disabled</head>
