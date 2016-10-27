@@ -550,16 +550,16 @@ Values recorded here MUST be from the following controlled list of types:
 * Consultancy Report
 * Working paper
 
-Only "Conference Paper/Proceeding/Abstract" and "Journal Article/Review" are applicable to the REF Open Access policy.
+Only "Conference Paper/Proceeding/Abstract" and "Journal Article/Review" are applicable for the REF Open Access policy.
 
 #### Date of Acceptance (dcterms.dateAccepted)
 The date on which the resource was accepted for publication. The date MUST be encoded using ISO 8601 (post–2004 versions) specifying year, month and day.
 
 #### Print Publication Date (dc.date.issued)
-The date the resource was published on print.
+The date the resource was published on print. An item must be deposited as soon after the point of acceptance as possible, and no later than three months after this date. During the first year of the policy (before 1 April 2017), items can be deposited up to three months after the date of print publication instead of the date of acceptance.
 
 #### Online Publication Date (refterms.dateFirstOnline)
-If the resource was not published on print, you can also fill in the online publication date in this field. It is also allowed to fill in both values.
+If the resource was not published on print, you can also fill in the online publication date in this field. It is also allowed to fill in both values. During the first year of the policy (before 1 April 2017), items can be deposited up to three months after the date of first online publication instead of the date of acceptance.
 
 #### Version of first compliant deposit (refterms.versionFCD)
 This field holds the compliant RIOXX version of the resource at the moment of deposit by the submitter. In case of workflows, the version can also be set by the corrected value of a reviewer. The compliant RIOXX versions are:
@@ -588,16 +588,68 @@ The REF policy makes a number of assumptions about aspects of the next REF that 
 The last day of the embargo period of the resource. In a default DSpace installation, the item will be publicly available as open access past this date.
 
 ### REF applicable items
-The REF Open Access policy only applies to items that have RIOXX type 'Conference Paper/Proceeding/Abstract' (with an ISSN) or 'Journal Article/Review'. The item must have been accepted after 1 April 2016.
+The REF Open Access policy only applies to items that have RIOXX type 'Conference Paper/Proceeding/Abstract' (with an ISSN) or 'Journal Article/Review'. In addition, the item must have been accepted after 1 April 2016. 
 
 ### REF exceptions
-TODO TOM
+There are a number of allowed exceptions to the requirements defined by the REF Open Access policy. These exceptions cover circumstances where a deposit was not possible, or where open access to deposited material could not be achieved within the policy requirements.
 
-#### Estimated values
-TODO TOM
+#### Deposit Exceptions (refterms.depositException and refterms.depositExceptionExplanation)
+The following deposit exceptions are possible:
+ * "noRepositoryAtAcceptance": The individual whose output is being submitted to the REF was unable to secure the use of a repository at the point of acceptance.
+ * "delaySecuringText": The individual whose output is being submitted to the REF experienced a delay in securing the final peer-reviewed text (for instance, where a paper has multiple authors).
+ * "notEmployedAtUKHEI": The individual whose output is being submitted to the REF was not employed by a UK HEI at the time of submission for publication.
+ * "unlawfulDeposit": It would be unlawful to deposit, or request the deposit of, the output.
+ * "securityRisk": Depositing the output would present a security risk.
+ * "publishedGoldOA": The output was published as 'gold' open access (e.g. RCUK-funded projects where an open access article processing charge has been paid).
 
-### Disabling or adding additional rules
-TODO TOM: + the XSD to validate it
+Additional motivation of why the exception applies, will be filled in by the submitter in field *refterms.depositExceptionExplanation*.
+
+#### Access Exceptions (refterms.accessException and refterms.accessExceptionExplanation)
+The following deposit exceptions are possible:
+ * "thirdPartyRights": The output depends on the reproduction of third party content for which open access rights could not be granted (either within the specified timescales, or at all).
+ * "publicationExceedsMaxEmbargo": The publication concerned requires an embargo period that exceeds the stated maxima, and was the most appropriate publication for the output.
+ * "publicationDisallowsOA": The publication concerned actively disallows open-access deposit in a repository, and was the most appropriate publication for the output.
+
+Additional motivation of why the exception applies, will be filled in by the submitter in field *refterms.accessExceptionExplanation*.
+
+#### Technical Exceptions (refterms.technicalException and refterms.technicalExceptionExplanation)
+Sometimes an item is unable to meet the criteria due to a technical issue. In the event of audit, the institution must be able to provide proof justifying the exception. The following technical exceptions are possible:
+ * "conferenceOutsideDefinition": Output is a conference proceeding, but not within definition (i.e., it does not have an ISSN, or the proceedings are published as part of book series).
+ * "differentUKHEI": At the point of acceptance, the individual whose output is being submitted to the REF was at a different UK HEI which failed to comply with the criteria.
+ * "technicalFailure": The repository experienced a short term or transient technical failure that prevented compliance with the criteria (this should not apply to systemic issues).
+ * "externalServiceProvider": An external service provider failure prevented compliance (for instance, a subject repository did not enable open access at the end of the embargo period, or a subject repository ceased to operate).
+ 
+Additional proof of why the exception applies, will be filled in by the submitter in field *refterms.technicalExceptionExplanation*.
+
+#### Other Exceptions (refterms.exceptionFreeText)
+In very exceptional cases, it may not be possible for an output to meet the open access requirements set out by this policy for a reason not covered by the other exceptions and a short explanation for this is provided. In the event of audit, the institution must be able to provide proof justifying the exception in field *refterms.exceptionFreeText*.
+
+### Estimated values
+The values for metadata fields refterms.versionFCD, refterms.dateFCD and refterms.dateFOA are determined by the REF Compliance Checker. At some points in the lifecycle of an item, these metadata fields will not have a value. 
+For example, during the submission the "version of first compliant deposit" and "date of first compliant deposit" cannot have a value since the item has not been deposited yet. Items that are under embargo cannot have a "date of first open access" as long as the embargo still applies.
+
+To determine REF compliance of items that do not have a value for all REF related metadata fields, the REF Compliance Checker will make an estimate of the future value for those metadata fields. Estimated values are indicated by a star (*) on the item compliance overview page. 
+
+### Disabling or Adding Additional Rules
+All REF (or RIOXX) compliance policy rules are defined in XML (*config/ref-validation-rules.xml* and *config/rioxx-validation-rules.xml* respectively). This means a repository administrator can disable certain rules by removing them from the XML file or add new, institution-specific rules. The format in which to write new rules is described in the XSD schema in file *config/item-validation-rules.xsd*.
+
+Currently, the rule framework has support for following rule types (defined in file *config/spring/api/item-validation-services.xml*):
+ * "value" rules: This type of rule can check if a specified metadata field has a certain value. The rule definition allows you to specify a list of possible values.
+   * The required definition fields are: field, fieldDescription and fieldValue.
+ * "notBlank" rules: These rules will check if the specified metadata field has a non-blank value.
+   * The required definition fields are: field and fieldDescription.
+ * "discoverable" rules: This rule type will check if an item is discoverable within DSpace by an anonymous user.
+   * There are no required definition fields.
+ * "countGreaterThan" rules: You can use this rule type to check if a given item field counts more values then the specified threshold. The field "bitstreams" is a special field that applies to the bitstreams of the item.
+   * The required definition fields are: field, fieldDescription and fieldValue.
+ * "dateRangeSmallerThanMonths" rules: These rules check if the date range specified by the from and to values, is smaller than the given threshold (in months).
+   * The required definition fields are: from, to, fieldDescription and fieldValue.
+ * "dateSmallerThan" rules: With this type of rule, you can check if the date in the provided metadata field is smaller than the specified threshold.
+   * The required definition fields are: field, fieldDescription and fieldValue.
+ * "dateGreaterThanOrEqual" rules: A rule to check if the date in a metadata field is greater or equal to a provided value.
+   * The required definition fields are: field, fieldDescription and fieldValue.
+ * "atLeastOneNotBlank" rules: This rules allows you to check if at least of the defined metadata fields has a non-blank value.
+   * The required definition fields are: field (multiple times) and fieldDescription (general description of all listed fields together).
 
 ## Troubleshooting
 ### Patch installation
