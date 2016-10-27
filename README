@@ -1,54 +1,41 @@
-DSpace version information can be viewed online at
- - https://wiki.duraspace.org/display/DSDOC/
+REF Open Access Policy Checker Plugin
+=====================================
 
-Documentation for the most recent stable release(s) may be downloaded
-or viewed online at
- - http://www.dspace.org/latest-release/
- - https://wiki.duraspace.org/display/DSDOC/
- - http://sourceforge.net/projects/dspace/files/DSpace%20Stable/
-     (select a version and read DSpace-Manual.pdf)
-
-Installation instructions are to be found in that documentation.
-
-In addition, a listing of all known contributors to DSpace software can be
-found online at:
-https://wiki.duraspace.org/display/DSPACE/DSpaceContributors
-
-Installation instructions for other versions may be different, so you
-are encouraged to obtain the appropriate version of the Documentation
-from the links above.
-
-To obtain files from the repository and build, please see:
-
- - https://github.com/DSpace/DSpace/
-
-or just:
-
- - git clone git://github.com/DSpace/DSpace.git
-
-Please refer any further problems to the dspace-tech@lists.sourceforge.net
-mailing list.
-
- - http://sourceforge.net/mail/?group_id=19984
-
-
-Detailed Issue Tracking for DSpace is done on our JIRA Issue Tracker
-
- - https://jira.duraspace.org/browse/DS
-
-
-To contribute to DSpace, please see:
-
- - https://wiki.duraspace.org/display/DSPACE/How+to+Contribute+to+DSpace
-
-
-For more details about DSpace, including a list of service providers,
-places to seek help, news articles and lists of other users, please see:
-
- - http://www.dspace.org/
-
-
-DSpace source code licensing information available online at:
- - http://www.dspace.org/license/
-
-Copyright (c) 2002-2015, DuraSpace.  All rights reserved.
+- [Introduction](#introduction)
+- [Quick Start](#quick-start)
+  * [Prerequisites](#prerequisites)
+  * [Obtaining a recent patch file](#obtaining-a-recent-patch-file)
+  * [Patch installation](#patch-installation)
+  * [REF Compliance Checker Configuration](#ref-compliance-checker-configuration)
+    * [Configuring the submission input fields](#configuring-the-submission-input-fields)
+    + [Configuring the submission steps](#configuring-the-submission-steps)
+    + [Enabling an additional workflow step](#enabling-an-additional-workflow-step)
+    + [Configuring the navigation menu](#configuring-the-navigation-menu)
+    + [Updating the rule descriptions and resolution hints](#updating-the-rule-descriptions-and-resolution-hints)
+    + [Enforcing mandatory compliance for specific collections or the whole repository](#enforcing-mandatory-compliance-for-specific-collections-or-the-whole-repository)
+    + [Configure authorization groups for seeing compliancy information](#configure-authorization-groups-for-seeing-compliancy-information)
+    + [Schedule curation tasks](#schedule-curation-tasks)
+  * [Other Policy Configurations](#other-policy-configurations)
+    + [Supporting other compliancy policies](#supporting-other-compliancy-policies)
+    + [RIOXX Configuration](#rioxx-configuration)
+- [In-Depth Documentation](#in-depth-documentation)
+  * [Metadata fields](#metadata-fields)
+    + [RIOXX Type (rioxxterms.type)](#rioxx-type--rioxxtermstype-)
+    + [Date of Acceptance (dcterms.dateAccepted)](#date-of-acceptance--dctermsdateaccepted-)
+    + [Print Publication Date (dc.date.issued)](#print-publication-date--dcdateissued-)
+    + [Online Publication Date (refterms.dateFirstOnline)](#online-publication-date--reftermsdatefirstonline-)
+    + [Version of first compliant deposit (refterms.versionFCD)](#version-of-first-compliant-deposit--reftermsversionfcd-)
+    + [Date of first compliant deposit (refterms.dateFCD)](#date-of-first-compliant-deposit--reftermsdatefcd-)
+    + [Date of first compliant Open Access (refterms.dateFOA)](#date-of-first-compliant-open-access--reftermsdatefoa-)
+    + [REF Panel (refterms.panel)](#ref-panel--reftermspanel-)
+    + [Embargo End Date](#embargo-end-date)
+  * [REF applicable items](#ref-applicable-items)
+  * [REF exceptions](#ref-exceptions)
+    + [Deposit Exceptions (refterms.depositException and refterms.depositExceptionExplanation)](#deposit-exceptions--reftermsdepositexception-and-reftermsdepositexceptionexplanation-)
+    + [Access Exceptions (refterms.accessException and refterms.accessExceptionExplanation)](#access-exceptions--reftermsaccessexception-and-reftermsaccessexceptionexplanation-)
+    + [Technical Exceptions (refterms.technicalException and refterms.technicalExceptionExplanation)](#technical-exceptions--reftermstechnicalexception-and-reftermstechnicalexceptionexplanation-)
+    + [Other Exceptions (refterms.exceptionFreeText)](#other-exceptions--reftermsexceptionfreetext-)
+  * [Estimated values](#estimated-values)
+  * [Disabling or Adding Additional Rules](#disabling-or-adding-additional-rules)
+- [Troubleshooting](#troubleshooting)
+  * [Patch installation](#patch-installation-1)
