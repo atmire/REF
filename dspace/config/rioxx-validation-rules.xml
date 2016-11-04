@@ -2,7 +2,7 @@
 <rule-categories xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="item-validation-rules.xsd">
 
     <category ordinal="1" name="Metadata Requirements"
-              description="The RIOXX policy (application profile) has a few mandatory metadata fields. These fields have to be filled in in order for a submission to be RIOXX compliant."
+              description="A number of metadata fields are required to make the metadata record of a publication RIOXX compliant."
               resolutionHint="This submission doesn't have all the required metadata fields. Please complete the missing metadata fields.">
         <rules>
             <rule type="notBlank"
@@ -30,8 +30,8 @@
                 <fieldDescription>date of acceptance</fieldDescription>
             </rule>
             <rule type="notBlank"
-                  description="Type refers to the 'type' - the nature or genre of the content of the resource and must be provided. Take care not to confuse this with dc.format."
-                  resolutionHint="Please provide the RIOXX type of the publication described by this item.">
+                  description="Type refers to the 'type' - the nature or genre of the content of the resource and must be provided."
+                  resolutionHint="Please provide the type of the publication described by this item.">
                 <field>rioxxterms.type</field>
                 <fieldDescription>RIOXX type</fieldDescription>
             </rule>
@@ -84,9 +84,9 @@
 
     </category>
 
-    <category ordinal="2" name="Access Requirements"
+    <category ordinal="2" name="File Access Requirements"
               description="The item must provide a URL that should point to the actual resource being described by the RIOXX record (typically a file in MS Word or PDF format), rather than to an intermediary resource such as a repository web page. In addition, the item's metadata must be publicly available."
-              resolutionHint="Please check if your item is publicly available and that it has a reference to the full-text publication.">
+              resolutionHint="Please check if your item is publicly available and that the full text was uploaded in the repository or that a url to the file is provided in the Openaccess uri field.">
         <rules>
             <rule type="countGreaterThan"
                   description="A compliant deposit must have at least one file."
