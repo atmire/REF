@@ -5,7 +5,7 @@
         <!-- The item has RIOXX type journal articles or conference proceedings -->
         <rule type="value"
               description="The REF policy for open access is only applicable to conference or journal publications."
-              resolutionHint="Please change the RIOXX type of this item to Conference Paper/Proceeding/Abstract or Journal Article/Review.">
+              resolutionHint="Please change the publication type of this item to Conference Paper/Proceeding/Abstract or Journal Article/Review.">
             <field>rioxxterms.type</field>
             <fieldDescription>RIOXX type</fieldDescription>
             <fieldValue>
@@ -31,14 +31,14 @@
     </preconditions>
 
     <category ordinal="1" name="Deposit Requirements"
-              description="To be deposit compliant, the item must have all the correct metadata and it must have been deposited as soon after the point of acceptance as possible."
-              resolutionHint="If you cannot meet the deposit requirements, then please select a deposit exception in the submission form.">
+              description="To comply with the deposit requirements, the item must have all the correct metadata and it must have been deposited as soon after the point of acceptance as possible."
+              resolutionHint="If you cannot meet the deposit requirements, you may still be able to make this publication eligible for the REF by selecting an appropriate deposit exception in the exception step of the submission form.">
         <rules>
 
             <!-- When the item concerns a Conference proceedings it is only applicable for REF compliance when it has an International Standard Serial Number (ISSN). -->
             <rule type="notBlank"
                   description="Conference proceedings are only applicable if they have an International Standard Serial Number (ISSN)"
-                  resolutionHint="If you want your submission to be REF applicable, please fill in the ISSN number that corresponds to the uploaded conference proceeding or select the corresponding technical exception.">
+                  resolutionHint="If you want your submission to be eligible for the REF, please fill in the ISSN number that corresponds to the uploaded conference proceeding or select the corresponding technical exception.">
                 <preconditions>
                     <rule type="value">
                         <field>rioxxterms.type</field>
@@ -66,8 +66,8 @@
 
             <!-- The item concerns the correct RIOXX version -->
             <rule type="value"
-                    description="The version of the text must be the author’s accepted or the (corrected/enhanced) peerreviewed text."
-                    resolutionHint="Please change the RIOXX version (rioxxterms.type) of this item to Author Manuscript (AM) or Version of Record (VoR).">
+                    description="The version of the text must be the author's accepted or the (corrected/enhanced) peerreviewed text."
+                    resolutionHint="Please change the publication version of this item to Author Manuscript (AM) or Version of Record (VoR).">
                 <field>refterms.versionFCD</field>
                 <fieldDescription>version of the deposited file</fieldDescription>
                 <fieldValue>
@@ -188,7 +188,7 @@
     </category>
 
     <category ordinal="2" name="Discovery Requirements"
-              description="To be discovery compliant, the item must be presented in a way that allows it to be discovered by readers and by automated tools such as search engines.">
+              description="To be eligible for the REF, the publication must be presented in a way that allows it to be discovered by readers and by automated tools such as search engines.">
         <rules>
             <rule type="discoverable"
                   description="The item must be discoverable and searchable by anonymous users."
@@ -211,7 +211,7 @@
     </category>
 
     <category ordinal="3" name="Access Requirements"
-              description="To be access compliant, it must be possible for anyone with internet access to search electronically within the text, read it and download it without charge, while respecting any constraints on timing but without too much delay."
+              description="To be eligible for the REF, the publication must be searchable electronically by anyone with internet access, readable and downloadable without charge, while respecting any constraints on timing but without too much delay."
               resolutionHint="If you cannot meet the access requirements, then please select an access requirements exception in the submission form.">
         <rules>
             <!-- If no embargo applies, the dateof first compliant Open Access must be less than one month after the dateof first compliant deposit. -->
