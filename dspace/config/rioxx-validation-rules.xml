@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rule-categories xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="item-validation-rules.xsd">
+
+    <category ordinal="1" name="Metadata Requirements"
+              description="Metadata Requirements"
+              resolutionHint="Metadata Requirements">
+        <rules>
+            <rule type="notBlank"
+                  description="A title is required">
+                <field>dc.title</field>
+                <fieldDescription>title</fieldDescription>
+            </rule>
+            <rule type="notBlank"
+                  description="An author is required">
+                <field>dc.contributor.author</field>
+                <fieldDescription>author</fieldDescription>
+            </rule>
+            <rule type="notBlank"
+                  description="A language is required">
+                <field>dc.language.iso</field>
+                <fieldDescription>language</fieldDescription>
+            </rule>
+            <rule type="notBlank"
+                  description="A date accepted is required">
+                <field>dcterms.dateAccepted</field>
+                <fieldDescription>date accepted</fieldDescription>
+            </rule>
+            <rule type="notBlank"
+                  description="A RIOXX type is required">
+                <field>rioxxterms.type</field>
+                <fieldDescription>type</fieldDescription>
+            </rule>
+            <rule type="notBlank"
+                  description="A RIOXX version is required">
+                <field>rioxxterms.version</field>
+                <fieldDescription>version</fieldDescription>
+            </rule>
+            <rule type="atLeastOneNotBlank"
+                  description="A uri is required">
+                <field>rioxxterms.licenseref.uri</field>
+                <field>dc.rights.uri</field>
+                <fieldDescription>uri</fieldDescription>
+            </rule>
+        </rules>
+
+    </category>
+
+    <category ordinal="2" name="Access Requirements"
+              description="Access Requirements"
+              resolutionHint="Access Requirements">
+        <rules>
+            <rule type="countGreaterThan"
+                  description="A compliant deposit must have at least one file."
+                  resolutionHint="Please upload the author’s accepted and final peerreviewed text to this item.">
+                <field>bitstream.count</field>
+                <fieldDescription>attached files</fieldDescription>
+                <fieldValue>
+                    <value>0</value>
+                </fieldValue>
+                <exceptions>
+                    <rule type="notBlank"
+                          description="A RIOXX openaccess uri is required"
+                          resolutionHint="Please fill in the URI of the location where the full text of your submission is present.">
+                        <field>rioxxterms.openaccess.uri</field>
+                        <fieldDescription>openaccess uri</fieldDescription>
+                    </rule>
+                </exceptions>
+            </rule>
+        </rules>
+
+    </category>
+
+    <category ordinal="3" name="Funding Requirements"
+              description="Funding Requirements"
+              resolutionHint="Funding Requirements">
+
+        <rules>
+            <rule type="notBlank"
+                  description="A project is required">
+                <field>rioxxterms.identifier.project</field>
+                <fieldDescription>project</fieldDescription>
+            </rule>
+            <rule type="notBlank"
+                  description="A funder is required">
+                <field>rioxxterms.funder</field>
+                <fieldDescription>funder</fieldDescription>
+            </rule>
+
+        </rules>
+
+    </category>
+
+</rule-categories>
+
+
