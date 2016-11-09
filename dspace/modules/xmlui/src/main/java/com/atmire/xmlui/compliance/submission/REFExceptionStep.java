@@ -10,7 +10,7 @@ import org.dspace.app.xmlui.wing.WingException;
 import org.dspace.app.xmlui.wing.element.*;
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.content.Collection;
-import org.dspace.content.Metadatum;
+import org.dspace.content.DCValue;
 import org.dspace.ref.compliance.result.CategoryComplianceResult;
 import org.dspace.ref.compliance.result.ComplianceResult;
 import org.dspace.ref.compliance.service.ComplianceCheckService;
