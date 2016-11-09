@@ -43,18 +43,18 @@ REF Open Access Policy Checker Plugin for DSpace
 # Introduction
 The REF Compliance Checker patch for DSpace has been developed to aid institutions in complying with the Open Access policy of the UK HE Funding Bodies. The REF Open Access policy sets out the details of a requirement that certain research outputs should be made open-access to be eligible for submission to the next Research Excellence Framework (REF). This requirement will apply to journal articles and conference proceedings with an International Standard Serial Number accepted for publication after 1 April 2016. More information can be found [here](http://www.hefce.ac.uk/pubs/year/2014/201407/).
 
-To be compliant with this policy, an item must adhere to a set of rules divided over three categories: 
+To be compliant with this policy, an item must adhere to a set of rules divided over three categories:
 * Deposit requirements
-* Discovery requirements 
-* Access requirements 
+* Discovery requirements
+* Access requirements
 
 These categories are evaluated in this specific order. This means that the Discovery requirements can only be met if the Deposit requirements were met first.
 
-The Deposit requirements state that the final research publication must have been deposited in an institutional or subject repository as soon after the point of acceptance as possible. 
+The Deposit requirements state that the final research publication must have been deposited in an institutional or subject repository as soon after the point of acceptance as possible.
 
-To be compliant with the Discovery requirements, the output must be presented in a way that allows it to be discovered by (anonymous) readers and by automated tools such as search engines. 
+To be compliant with the Discovery requirements, the output must be presented in a way that allows it to be discovered by (anonymous) readers and by automated tools such as search engines.
 
-The Access requirements require that it must be possible for anyone with internet access to search electronically within the text, read it and download it without charge, while respecting any constraints on timing (like embargoes) but without too much delay. 
+The Access requirements require that it must be possible for anyone with internet access to search electronically within the text, read it and download it without charge, while respecting any constraints on timing (like embargoes) but without too much delay.
 
 ## Accepted exceptions
 
@@ -62,7 +62,7 @@ There are a number of exceptions to the various categories that are accepted by 
 
 ## Functionality
 
-The purpose of the REF Compliance Checker is to make it easier for researchers and repository administrators to submit publications to a DSpace repository, compliant to the REF Open Access policy. 
+The purpose of the REF Compliance Checker is to make it easier for researchers and repository administrators to submit publications to a DSpace repository, compliant to the REF Open Access policy.
 
 Currently this patch offers:
 
@@ -173,7 +173,7 @@ An example submission form configuration can be found [here](https://github.com/
 
 
 ### Configuring the submission steps
-The patch adds new submission steps to the DSpace submission forms. 
+The patch adds new submission steps to the DSpace submission forms.
 The submission steps are configured in file *dspace/config/item-submission.xml*.
 
 #### Exception Step
@@ -184,28 +184,28 @@ The "Exceptions" step should be included after the file upload step and contains
 
 The initial page preselects the "No Exception Applicable" checkbox.
 
-![Exception Step initial](../../raw/docs/images/initial.png "Exception Step initial")
+![Exception Step initial](../../raw/master/images/initial.png "Exception Step initial")
 
 Upon clicking a different option, extra fields are presented to the user.
 These extra fields are also configurable in the same file as where the configuration for what options to show is set.
 
-![Exception Step new option clicked](../../raw/docs/images/new-option-clicked.png "Exception Step new option clicked")
+![Exception Step new option clicked](../../raw/master/images/new-option-clicked.png "Exception Step new option clicked")
 
 Apart from the "No Exception applicable" There are 2 different "types" of exception-views.
 
 1. Deposit, Access and Technical Exception -> These Exceptions all have subdivisions. This is shown as a dropdown box containing extra options. The help text underneath the textarea changes depending on what option was selected.
 2. Other Exception -> This only contains the input field where the user can fill in the explanation of the exception.
 
-![Exception Step no dropdown](../../raw/docs/images/no-dropdown.png "Exception Step no dropdown")
+![Exception Step no dropdown](../../raw/master/images/no-dropdown.png "Exception Step no dropdown")
 
 As stated before, only 1 exception can be present on a single item, if a new option/explanation is set, the previous is removed.
 If, during the review step or the workflow review, the exceptions step is shown again, the page preselects and prefills the saved data.
 
-![Exception Step prefilled](../../raw/docs/images/prefilled.png "Exception Step prefilled")
+![Exception Step prefilled](../../raw/master/images/prefilled.png "Exception Step prefilled")
 
 Above the Previous, Save and Next buttons the general result of the compliance check is shown. This allows the user to see if the submission is compliant or if he needs to select an exception to make the submission compliant.
 
-![Exception Step compliance text](../../raw/docs/images/hefce-exception-compliance-text.png "Exception Step compliance text")
+![Exception Step compliance text](../../raw/master/images/hefce-exception-compliance-text.png "Exception Step compliance text")
 
 #### REF Compliance Step
 
@@ -219,13 +219,13 @@ The color of the bar at the top of the page content will immediately make it cle
 
 If there is a violation then another orange bar is shown under the top bar with a summary of the actions the submitter can perform to make the submission compliant.
 
-![Compliance Step top](../../raw/docs/images/hefce-compliancestep-1.png "Compliance Step top")
+![Compliance Step top](../../raw/master/images/hefce-compliancestep-1.png "Compliance Step top")
 
 ##### Technical and Other Exceptions
 
 When the submission contains a 'technical' or 'other' exception, a section "Technical and Other Exceptions" is visible. This section contains information about the exception.
 
-![Compliance Step Technical and Other Exceptions](../../raw/docs/images/hefce-compliancestep-2.png "Compliance Step Technical and Other Exceptions")
+![Compliance Step Technical and Other Exceptions](../../raw/master/images/hefce-compliancestep-2.png "Compliance Step Technical and Other Exceptions")
 
 ##### Requirements sections
 
@@ -235,23 +235,23 @@ If a requirements section title is grayed out, none of the requirements in that 
 
 Requirements that are not applicable to a submission are hidden by default. To show all requirements, link "show all rules" under the top bar(s) can be clicked.
 
-![Compliance Step show all rules](../../raw/docs/images/hefce-compliancestep-3.png "Compliance Step show all rules")
+![Compliance Step show all rules](../../raw/master/images/hefce-compliancestep-3.png "Compliance Step show all rules")
 
 Requirements and requirements section titles have a question mark next to their name. When the submitter hovers over these question marks, hints appear with extra information about that specific requirement or category.
 
-![Compliance Step hints](../../raw/docs/images/hefce-compliancestep-4.png "Compliance Step hints")
+![Compliance Step hints](../../raw/master/images/hefce-compliancestep-4.png "Compliance Step hints")
 
 ##### REF Compliance related data
 
 At the bottom of the page, the section "REF Compliance related data" shows an overview of the submission's metadata that is relevant for determining if a submission is compliant.
 
-![Compliance Step related data](../../raw/docs/images/hefce-compliancestep-5.png "Compliance Step related data")
+![Compliance Step related data](../../raw/master/images/hefce-compliancestep-5.png "Compliance Step related data")
 
 Some of these values contain text *(estimated)*. These values were estimated so that they could be used in the compliance check. They will receive a “real” value upon item archival or at the end of an embargo period.
 
 #### Type dependent steps
 
-The patch contains custom functionality to hide or show submission steps for specific item types. 
+The patch contains custom functionality to hide or show submission steps for specific item types.
 
 Currently, the type-dependency is set to only show the Exceptions and Compliance step for items with rioxxterms.type "Conference Paper/Proceeding/Abstract" or "Journal Article/Review". If you want the Exception and Compliance steps to appear for all submissions in your repository, regardless of the item type, you can skip this section.
 
@@ -445,7 +445,7 @@ This property can also be configured separately for a specific collection by add
 
 ### Configure authorization groups for seeing compliancy information
 By default, information on the compliance of archived items is only visible to:
-* administrators 
+* administrators
 * Users that are member of the "REF Compliance Viewers" group
 * The original submitter of the item
 
@@ -494,7 +494,7 @@ _Something to note:_ If a configured group does not exist in the current reposit
 
 Date of first compliant open access is a field that should not be set by the submitter or by an administrator, it should automatically be set by the system if the content actually becomes available in open access after expiry of an embargo.
 
-A curation task to update the Date of first compliant Open Access of an item is available from the list of curation tasks for items, collections and communities. 
+A curation task to update the Date of first compliant Open Access of an item is available from the list of curation tasks for items, collections and communities.
 
 This curation task checks the embargo of an item's bitstreams and updates the Date of first compliant Open Access to the end date of the embargo only if the embargo has expired.
 
