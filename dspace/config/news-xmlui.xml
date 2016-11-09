@@ -31,7 +31,7 @@
                 </list>
             </div>
             <div id="file.news.div.news2" n="news2" rend="news-div">
-                <head>Current development phase: REF Compliance Checker v1 Released</head>
+                <head>REF Compliance Checker for DSpace v1 Released</head>
                 <p>Following credentials can be used to log in and test the functionality:</p>
                 <p>
                     <table n="table1" id="credentials-table" rows="2" cols="2">
@@ -48,10 +48,9 @@
                 <p>Password: The password for both of these accounts is the abbreviation of &quot;Higher Education Funding Council for England&quot;, in lowercase.</p>
                 <p>You can report your questions, comments and other feedback on the Github Issues page:</p>
                 <p><xref target="https://github.com/atmire/REF/issues">https://github.com/atmire/REF/issues</xref></p>
-                <p>The community feedback phase was extended to <hi rend="bold">August 31st</hi>. After this feedback phase, Atmire resolved the final issues and made the source code available for DSpace 4 &amp; 5.</p>
             </div>
             <div id="file.news.div.news3" n="news3" rend="news-div">
-                <head>When can I install this functionality in my DSpace?</head>
+                <head>Installation instructions and documentation for DSpace 4 and 5</head>
                 <p>The code for these features and deployment instructions are available on Github: <xref target="https://github.com/atmire/REF">https://github.com/atmire/REF</xref></p>
                 <p>Detailed installation instructions and additional documentation can be found in the <xref target="https://github.com/atmire/REF/blob/master/README.md">README.md</xref> file.</p>
             </div>
