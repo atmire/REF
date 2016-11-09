@@ -1,7 +1,7 @@
 package org.dspace.ref.compliance.service;
 
 import com.atmire.utils.EmbargoUtils;
-import com.atmire.utils.Metadatum;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -65,7 +65,7 @@ public class ComplianceCheckServiceBean implements ComplianceCheckService {
 
             } catch(Exception ex) {
                 context.abort();
-                throw ex;
+                log.warn(ex.getMessage(), ex);
 
             } finally {
                 // Always remove the temporary values
