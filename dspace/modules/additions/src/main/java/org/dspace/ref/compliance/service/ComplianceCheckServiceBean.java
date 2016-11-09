@@ -65,7 +65,7 @@ public class ComplianceCheckServiceBean implements ComplianceCheckService {
 
             } catch(Exception ex) {
                 context.abort();
-                throw ex;
+                log.warn(ex.getMessage(), ex);
 
             } finally {
                 // Always remove the temporary values
