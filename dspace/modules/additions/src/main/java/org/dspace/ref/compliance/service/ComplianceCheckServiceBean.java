@@ -1,16 +1,24 @@
 package org.dspace.ref.compliance.service;
 
-import com.atmire.utils.*;
-import java.util.*;
-import org.apache.commons.lang.*;
-import org.apache.log4j.*;
-import org.dspace.content.*;
-import org.dspace.core.*;
-import org.dspace.ref.compliance.result.*;
-import org.dspace.ref.compliance.rules.*;
-import org.dspace.ref.compliance.rules.exception.*;
-import org.dspace.ref.compliance.rules.factory.*;
-import org.dspace.util.subclasses.*;
+import com.atmire.utils.EmbargoUtils;
+import com.atmire.utils.Metadatum;
+import org.apache.commons.collections.MapUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
+import org.dspace.content.DCDate;
+import org.dspace.content.DCValue;
+import org.dspace.content.Item;
+import org.dspace.core.Context;
+import org.dspace.ref.compliance.result.ComplianceResult;
+import org.dspace.ref.compliance.rules.CompliancePolicy;
+import org.dspace.ref.compliance.rules.exception.ValidationRuleDefinitionException;
+import org.dspace.ref.compliance.rules.factory.ComplianceCategoryRulesFactory;
+import org.dspace.util.subclasses.Metadata;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Implementation of {@link ComplianceCheckService}
@@ -19,8 +27,8 @@ public class ComplianceCheckServiceBean implements ComplianceCheckService {
 
     private static Logger log = Logger.getLogger(ComplianceCheckServiceBean.class);
 
-    private Map<String,String> fakeIfEmptyDuringValidation;
-    private Map<String,String> fakeIfEmptyDuringUnarchivedValidation;
+    private Map<String, String> fakeIfEmptyDuringValidation;
+    private Map<String, String> fakeIfEmptyDuringUnarchivedValidation;
 
     private final String now = "now";
     private final String embargoOrNow = "embargoOrNow";
@@ -35,20 +43,32 @@ public class ComplianceCheckServiceBean implements ComplianceCheckService {
 
     public ComplianceResult checkCompliance(final Context context, final Item item) {
         CompliancePolicy policy = getCompliancePolicy();
-        if(policy == null) {
+
+        if (policy == null) {
             return new ComplianceResult();
+
         } else {
+            ComplianceResult complianceResult = null;
+
             // temporarily add fake values for empty fields so validation does not fail on these fields
             List<Metadata> fakeFields = addFakeValues(context, item);
 
-            ComplianceResult complianceResult = policy.validatePreconditionRules(context, item);
+            try {
+                complianceResult = policy.validatePreconditionRules(context, item);
 
-            if(complianceResult.isApplicable()) {
-                complianceResult = policy.validate(context, item, complianceResult);
+                if (complianceResult.isApplicable()) {
+                    complianceResult = policy.validate(context, item, complianceResult);
 
-                complianceResult.addEstimatedValues(fakeFields);
+                    complianceResult.addEstimatedValues(fakeFields);
 
-                // remove the temporary values
+                }
+
+            } catch(Exception ex) {
+                context.abort();
+                throw ex;
+
+            } finally {
+                // Always remove the temporary values
                 removeFakeValues(context, fakeFields, item);
             }
 
@@ -61,12 +81,12 @@ public class ComplianceCheckServiceBean implements ComplianceCheckService {
         String blockWorkflowOnViolation = org.dspace.core.ConfigurationManager.getProperty("item-compliance",
                 identifier + blockWorkflowConfig + collectionHandle);
 
-        if(StringUtils.isBlank(blockWorkflowOnViolation)) {
+        if (StringUtils.isBlank(blockWorkflowOnViolation)) {
             blockWorkflowOnViolation = org.dspace.core.ConfigurationManager.getProperty("item-compliance",
                     identifier + blockWorkflowConfig + defaultConfig);
         }
 
-        if(StringUtils.isNotBlank(blockWorkflowOnViolation) ){
+        if (StringUtils.isNotBlank(blockWorkflowOnViolation)) {
             return Boolean.parseBoolean(blockWorkflowOnViolation);
         }
 
@@ -74,38 +94,43 @@ public class ComplianceCheckServiceBean implements ComplianceCheckService {
     }
 
     private void removeFakeValues(Context context, List<Metadata> fakeFields, Item item) {
-        for (Metadata fakeField : fakeFields) {
-            item.clearMetadata(fakeField.schema, fakeField.element, fakeField.qualifier,fakeField.language);
-        }
-        try {
-            item.update();
-            context.commit();
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
+        if(CollectionUtils.isNotEmpty(fakeFields) && context.isValid()) {
 
+            for (Metadata fakeField : fakeFields) {
+                item.clearMetadata(fakeField.schema, fakeField.element, fakeField.qualifier, fakeField.language);
+            }
+            try {
+                item.update();
+                context.commit();
+            } catch (Exception e) {
+                log.error(e.getMessage(), e);
+            }
+
+        }
     }
 
     private List<Metadata> addFakeValues(Context context, Item item) {
         List<Metadata> fakeFields = addFakeValues(context, item, fakeIfEmptyDuringValidation);
 
-        if(!item.isArchived()){
+        if (!item.isArchived()) {
             fakeFields.addAll(addFakeValues(context, item, fakeIfEmptyDuringUnarchivedValidation));
         }
 
         return fakeFields;
     }
 
-    private List<Metadata> addFakeValues(Context context, Item item, Map<String,String> fakeFieldMap) {
+    private List<Metadata> addFakeValues(Context context, Item item, Map<String, String> fakeFieldMap) {
         List<Metadata> fakeFields = new ArrayList<Metadata>();
 
-        for (String field : fakeFieldMap.keySet()) {
-            DCValue[] dcValues = item.getMetadata(field);
+        if (MapUtils.isNotEmpty(fakeFieldMap)) {
+            for (String field : fakeFieldMap.keySet()) {
+                DCValue[] dcValues = item.getMetadata(field);
 
-            if(dcValues.length==0){
-                Metadata metadata = org.dspace.util.MetadataFieldString.encapsulate(field);
-                addFakeValue(context, item, metadata, fakeFieldMap.get(field));
-                fakeFields.add(metadata);
+                if (dcValues.length == 0) {
+                    Metadata metadata = org.dspace.util.MetadataFieldString.encapsulate(field);
+                    addFakeValue(context, item, metadata, fakeFieldMap.get(field));
+                    fakeFields.add(metadata);
+                }
             }
         }
 
@@ -115,7 +140,7 @@ public class ComplianceCheckServiceBean implements ComplianceCheckService {
     private void addFakeValue(Context context, Item item, Metadata field, String value) {
         String estimatedValue = estimateValue(context, item, value);
 
-        item.addMetadata(field.schema,field.element,field.qualifier,field.language,estimatedValue);
+        item.addMetadata(field.schema, field.element, field.qualifier, field.language, estimatedValue);
         field.value = estimatedValue;
 
         try {
@@ -126,25 +151,22 @@ public class ComplianceCheckServiceBean implements ComplianceCheckService {
         }
     }
 
-    private String estimateValue(Context context, Item item, String value)
-    {
+    private String estimateValue(Context context, Item item, String value) {
         String estimatedValue = null;
-        if(now.equals(value)){
+        if (now.equals(value)) {
             estimatedValue = DCDate.getCurrent().toString();
-        }
-        else if(embargoOrNow.equals(value)){
+        } else if (embargoOrNow.equals(value)) {
             Date lastEmbargo = EmbargoUtils.getLastEmbargo(item, context);
 
-            if(lastEmbargo==null){
+            if (lastEmbargo == null) {
                 lastEmbargo = new Date();
             }
 
             estimatedValue = new DCDate(lastEmbargo).toString();
-        }
-        else {
+        } else {
             DCValue[] metadata = item.getMetadata(value);
 
-            if(metadata.length>0){
+            if (metadata.length > 0) {
                 estimatedValue = metadata[0].value;
             }
         }

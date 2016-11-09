@@ -40,12 +40,13 @@ public class FirstComplianceDepositConsumer implements Consumer {
         switch (subjectType) {
             case Constants.ITEM:
                 Item item = (Item) dso;
+                //If we are updating the metadata and [ the item is archived or the submitter completed his submission ]
                 if (eventType == Event.MODIFY_METADATA  && !item.isWithdrawn() && (item.isArchived() || WorkspaceItem.findByItem(context, item)==null )) {
                     itemIDs.add(dso.getID());
                 }
                 break;
             default:
-                log.warn("consume() got unrecognized event: " + event.toString());
+                log.debug("consume() got unrecognized event: " + event.toString());
         }
     }
 
