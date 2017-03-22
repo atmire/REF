@@ -72,15 +72,16 @@ public class UnAuthenticateAction extends AbstractAction
         context.setCurrentUser(eperson);
         
         // Forward the user to the home page.
-        if((ConfigurationManager.getBooleanProperty("xmlui.public.logout")) && (httpRequest.isSecure())) {
+        if((ConfigurationManager.getBooleanProperty("xmlui.public.logout"))
+                && (httpRequest.isSecure())) {
 				StringBuffer location = new StringBuffer("http://");
-				location.append(ConfigurationManager.getProperty("dspace.hostname")).append(
-						httpRequest.getContextPath());
+				location.append(ConfigurationManager.getProperty("dspace.hostname"))
+                        .append(httpRequest.getContextPath());
 				httpResponse.sendRedirect(location.toString());
 			
 		}
         else{
-        	httpResponse.sendRedirect(httpRequest.getContextPath());
+            httpResponse.sendRedirect(ConfigurationManager.getProperty("dspace.url"));
         }
         
         return new HashMap();
