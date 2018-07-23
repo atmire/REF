@@ -91,7 +91,8 @@ To be able to install the patch, you will need the following prerequisites:
 Atmire's modifications for the REF Open Access Policy Checker patch are tracked on Github. Using the provided tools, a patch file can be generated from GIT.
 By comparing the latest codebase against a clean DSpace, we can select the customizations that have been applied
 
- * DSPACE 5.x: [https://github.com/atmire/REF/compare/dspace_5x...stable_5x.diff](https://github.com/atmire/REF/compare/dspace_5x...stable_5x.diff)
+ * DSPACE 5.0-5.6: [https://github.com/atmire/REF/compare/dspace_5x...stable_5x.diff](https://github.com/atmire/REF/compare/dspace_5x...stable_5x.diff)
+ * DSPACE 5.7: [https://github.com/atmire/REF57/compare/dspace_57...stable_57.diff](https://github.com/atmire/REF57/compare/dspace_57...stable_57.diff)
  * DSPACE 4.x: [https://github.com/atmire/REF/compare/dspace_4x...stable_4x.diff](https://github.com/atmire/REF/compare/dspace_4x...stable_4x.diff)
 
 ## Patch installation
